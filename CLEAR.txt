@@ -1,0 +1,13 @@
+Comandos correctos en Git Bash para limpiar 
+
+✅ 1. Borrar node_modules
+rm -rf node_modules
+
+✅ 2. Borrar package-lock.json
+rm -f package-lock.json
+
+✅ 3. Limpiar caché
+npm cache clean --force
+
+✅ 4. Instalar dependencias de nuevo
+npm install

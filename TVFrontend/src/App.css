@@ -1,0 +1,993 @@
+@import "tailwindcss";
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2.7rem;
+  /*text-align: center;*/
+  background-color: #ffffff;
+}
+
+/*.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+/* Estilos para el login ---------------------------------------------------------------------------------------------------------------------*/
+/* Contenedor principal del login */
+
+body {
+  background-color: #ffffff;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
+/* Contenedor principal del login */
+.login-container {
+  display: flex;
+  justify-content: center;
+  width: 700px;
+  height: 350px;
+  margin: 8rem auto;
+  background-color: white;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* Lado izquierdo con logo y nombre */
+.login-left {
+  flex: 0.5;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.login-left img {
+  width: 160px;
+  height: 160px;
+  margin-bottom: 10px;
+}
+
+.login-left h1 {
+  color: #009688;
+  font-size: 22px;
+}
+
+/* Lado derecho con formulario */
+.login-right {
+  flex: 1;
+  background-color: #d6fffb;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items:center;
+  padding: 30px;
+ 
+}
+
+.login-right h2 {
+  color: #009688;
+  margin-bottom: 25px;
+}
+
+.login-right form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.login-right input {
+  width: 95%;
+  display: block;
+  margin-bottom: 15px;
+  padding: 10px;
+  border: none;
+  border-radius: 20px;
+  background-color: white;
+  box-shadow: 0 0 3px rgba(0,0,0,0.1);
+}
+
+.login-right button {
+  padding: 10px;
+  background-color: #009688;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.login-right button:hover {
+  background-color: #00796b;
+}
+
+.error {
+  color: red;
+  margin-top: 10px;
+  text-align: center;
+}
+/*----------------------------------------------------------------------------------------------------------------------------------------------*/
+/*   NAVBAR  */
+
+/* ----- Barra de navegación general ----- */
+.navbar {
+  width: 100%;
+  background-color: rgb(22, 223, 187); /* color de fondo */
+  padding: 15px 10px;
+  position: fixed; /* queda arriba aunque se scrollee */
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+/* ----- Lista principal ----- */
+.navbar-list {
+   display: flex;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 20px;
+}
+
+/* ----- Links ----- */
+.navbar-list a {
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.navbar-list a:hover {
+  color: #000000; /* color al pasar el mouse */
+}
+
+/* Dropdown */
+.dropdown-container {
+  position: relative;
+  font-weight: 500;
+
+}
+
+.dropdown-toggle {
+  color: white;
+  cursor: pointer;
+}
+
+.dropdown-toggle:hover {
+  color: #000000;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 35px;
+  left: 20;
+  background-color:rgb(27, 153, 131);; /*color del fondo*/
+  border-radius: 5px;
+  list-style: none;
+  padding: 5px 0;
+  margin: 0;
+  min-width: fit-content;  /* 👈 se adapta al texto sin recortarlo */
+  width: auto;
+  white-space: nowrap;
+}
+
+.dropdown-menu li {
+  padding: 10px 15px;
+  
+}
+
+.dropdown-menu li a {
+  color: white;
+  display: block;
+}
+
+.dropdown-menu li a:hover {
+  color: #000000;
+}
+
+/* Botón de cerrar sesión */
+.logout-btn {
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  font-weight: 500;
+}
+
+.logout-btn:hover {
+  background-color: #ff3333;
+}
+
+.navbar-list > li:last-child {
+  margin-left: auto;
+  margin-right: 30px;
+}
+
+
+
+
+/*-----------------------------------------------------------------------------------------------------------------------------------------------*/
+
+
+/* src/App.css - Estilos para el HOME */
+
+.contenedor-texto-flotante {
+  position: relative;
+}
+.texto-flotante {
+  position: absolute; /* permite que flote */
+  top: 30px;          /* distancia desde arriba del contenedor */
+  left: 20px;        /* distancia desde la derecha del contenedor */
+  color: rgb(255, 255, 255); /*color del fondo*/
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 35px;
+}
+.home-container {
+  display: flex;
+  justify-content: center; /* centra horizontalmente */
+  align-items: center;     /* centra verticalmente */
+  height: calc(100vh - 60px); /* ocupa toda la pantalla menos la navbar */
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.home-image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/*----------------------------------------------------------------------------------------------------------------------------------------------------*/
+/*USUARIOS*/
+
+.user-management-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  height: 85vh;
+  margin: 30px auto;
+  max-width: 900px;
+  padding: 30px;
+  background-color: rgb(255, 255, 255);
+}
+
+.user-form-left {
+  width: 500px;
+  background: rgba(255, 255, 255, 0.3); /*color del fondo*/
+  border-radius: 16px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+.header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.create-btn {
+  background: #4f46e5;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.user-list-items {
+  margin-top: 20px;
+  list-style: none;
+  padding: 0;
+  max-height: 400px;
+  overflow-y: auto;
+  scrollbar-width: thin; /* Firefox */
+}
+
+.user-list-items::-webkit-scrollbar {
+  width: 6px;
+}
+
+.user-list-items::-webkit-scrollbar-thumb {
+  background: #9ca3af;
+  border-radius: 10px;
+}
+
+.user-list-items::-webkit-scrollbar-track {
+  background: #f3f4f6;
+}
+
+.user-list-item {
+  background: #f9fafb;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* CAMPOS DEL FORMULARIO ----------------------------------------------*/
+.form-field,
+.form-field-drop {
+  margin-bottom: 10px;
+  color: #000000;
+}
+
+.form-field label,
+.form-field-drop label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+.form-input,
+.form-input-drop {
+  width: 90%;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  transition: border-color 0.2s;
+}
+
+.form-input:focus,
+.form-input-drop:focus {
+  border-color: #2563eb;
+  outline: none;
+}
+
+/*-------------------------------------------------------------------*/
+
+.user-actions button {
+  margin-left: 8px;
+  border: none;
+  border-radius: 6px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.edit-btn {
+  background: #2563eb;
+  color: white;
+}
+
+.delete-btn {
+  background: #dc2626;
+  color: white;
+}
+
+.form-field {
+  color: #000000;
+}
+
+/* MODAL */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+.modal-content {
+  background: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  width: 400px;
+  max-width: 90%;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.save-btn {
+  background: #22c55e;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+}
+
+.cancel-btn {
+  background: #6b7280;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+}
+
+/* TOGGLE ESTADO */
+.form-toggle {
+  margin: 15px 0;
+}
+
+.toggle-switch {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.toggle-switch input {
+  display: none;
+}
+
+.slider {
+  position: relative;
+  width: 50px;
+  height: 26px;
+  background-color: #ccc;
+  border-radius: 999px;
+  transition: background-color 0.3s;
+}
+
+.slider::before {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 20px;
+  height: 20px;
+  background-color: #fff;
+  border-radius: 50%;
+  transition: transform 0.3s;
+}
+
+.toggle-switch input:checked + .slider {
+  background-color: #22c55e;
+}
+
+.toggle-switch input:checked + .slider::before {
+  transform: translateX(24px);
+}
+
+.toggle-label {
+  font-weight: 500;
+}
+
+/*--------------PRODUCTOS-------------------------------------------------------------------------------------------------------------------------*/
+
+
+.page {
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 30px;
+  background-color: #f8f9fa;
+  border-radius: 16px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* ======= TÍTULO ======= */
+.page h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 25px;
+}
+
+/* ======= FORMULARIO ======= */
+.product-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: space-between;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.product-form input,
+.product-form select {
+  flex: 1 1 45%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 15px;
+  transition: 0.3s;
+}
+
+.product-form input:focus,
+.product-form select:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.4);
+}
+
+.product-form label {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+  gap: 8px;
+}
+
+/* ======= BOTONES ======= */
+.product-form button {
+  padding: 10px 18px;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.product-form button[type="submit"] {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.product-form button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+.product-form button[type="button"] {
+  background-color: #6c757d;
+  color: #fff;
+}
+
+.product-form button[type="button"]:hover {
+  background-color: #545b62;
+}
+
+/* ======= TABLA ======= */
+.product-table {
+  width: 100%;
+  margin-top: 25px;
+  border-collapse: collapse;
+  background-color: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* contenedor con scroll */
+.product-table-container {
+  max-height: 320px; /* puedes ajustar este valor */
+  overflow-y: auto;
+  border-radius: 12px;
+}
+
+/* estilo del scroll */
+.product-table-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.product-table-container::-webkit-scrollbar-thumb {
+  background-color: #c1c1c1;
+  border-radius: 10px;
+}
+
+.product-table-container::-webkit-scrollbar-thumb:hover {
+  background-color: #999;
+}
+
+/* ======= CELDAS ======= */
+.product-table th,
+.product-table td {
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+  text-align: center;
+}
+
+.product-table th {
+  background-color: #007bff;
+  color: white;
+  font-weight: 600;
+}
+
+.product-table tr:hover {
+  background-color: #f1f1f1;
+}
+
+/* ======= BOTONES DE TABLA ======= */
+.product-table button {
+  margin: 0 5px;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  color: white;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.product-table button:first-child {
+  background-color: #28a745;
+}
+
+.product-table button:first-child:hover {
+  background-color: #218838;
+}
+
+.product-table button:last-child {
+  background-color: #dc3545;
+}
+
+.product-table button:last-child:hover {
+  background-color: #c82333;
+}
+
+/*------------------------------------------------------CATEGORIA-----------------------------------------------------------------------------------------------*/
+
+.page {
+  padding: 30px;
+  font-family: Arial, sans-serif;
+  background: rgba(255, 255, 255, 0.3);/*color del f*/
+}
+
+/* TÍTULO */
+.page h1 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* FORMULARIO */
+.category-form {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+
+.category-form input[type="text"] {
+  padding: 8px 12px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  flex: 1 1 200px;
+}
+
+.category-form label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 14px;
+}
+
+.category-form button {
+  padding: 8px 16px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.category-form button:hover {
+  background-color: #45a049;
+}
+
+/* TABLA */
+.category-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+  box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
+}
+
+.category-table th,
+.category-table td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.category-table th {
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+.category-table tr:hover {
+  background-color: #f9f9f9;
+}
+
+/* BOTONES DE ACCIÓN */
+.category-table button {
+  padding: 5px 10px;
+  margin-right: 5px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: 0.2s;
+}
+
+.category-table button:first-child {
+  background-color: #2196F3;
+  color: white;
+}
+
+.category-table button:first-child:hover {
+  background-color: #1976d2;
+}
+
+.category-table button:last-child {
+  background-color: #f44336;
+  color: white;
+}
+
+.category-table button:last-child:hover {
+  background-color: #d32f2f;
+}
+
+/*-----------------------------------------------------COMPRAS-------------------------------------------------------------------------------------------*/
+
+/* ==== Estructura general ==== */
+.compra-page {
+  padding: 20px;
+  max-width: 1100px;
+  margin: auto;
+  font-family: "Segoe UI", sans-serif;
+}
+
+.compra-page h1 {
+  margin-bottom: 20px;
+  font-size: 28px;
+  color: #333;
+  text-align: center;
+}
+
+/* ==== CARD ==== */
+.card {
+  background: rgba(255, 255, 255, 0.3);
+  padding: 20px;
+  margin-bottom: 25px;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+.card h3 {
+  margin-bottom: 15px;
+  color: #444;
+  border-left: 4px solid #4a90e2;
+  padding-left: 10px;
+}
+
+/* ==== Rows generales ==== */
+.row {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+.row label {
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #555;
+}
+
+.row input,
+.row select {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+/* ==== Grid para el bloque Producto ==== */
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+}
+
+.grid-4 label {
+  font-weight: 600;
+}
+
+.grid-4 input,
+.grid-4 select {
+  width: 100%;
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+/* ==== Inputs ==== */
+input,
+select {
+  transition: border 0.2s ease;
+}
+
+input:focus,
+select:focus {
+  border-color: #4a90e2;
+  outline: none;
+}
+
+/* ==== Botones ==== */
+button {
+  padding: 8px 14px;
+  background: #4a90e2;
+  border: none;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.2s;
+}
+
+button:hover {
+  background: #3275c7;
+}
+
+button:nth-child(2) {
+  background: #d9534f;
+}
+
+button:nth-child(2):hover {
+  background: #c9302c;
+}
+
+.btn-primary {
+  padding: 10px 18px;
+  font-size: 16px;
+  background: #28a745 !important;
+}
+
+.btn-primary:hover {
+  background: #1e8b39 !important;
+}
+
+/* ==== Proveedor seleccionado ==== */
+.selected-box {
+  margin-top: 12px;
+  padding: 10px;
+  background: #f5f7ff;
+  border-left: 4px solid #4a90e2;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+/* ==== Tabla ==== */
+.tabla {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.tabla th,
+.tabla td {
+  padding: 10px;
+  text-align: left;
+  font-size: 14px;
+}
+
+.tabla th {
+  background: #4a90e2;
+  color: white;
+}
+
+.tabla tr:nth-child(even) {
+  background: #f5f5f5;
+}
+
+.tabla tr:hover {
+  background: #e8eefc;
+}
+
+.tabla button {
+  margin-right: 6px;
+}
+
+/* ==== Footer ==== */
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 25px;
+}
+
+/* ==== Total ==== */
+.total-card {
+  background: #fff;
+  padding: 16px 22px;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+}
+
+.total-amount {
+  font-size: 22px;
+  color: #28a745;
+  margin-top: 6px;
+}
+
+/*----------------------------COMPRAS REGISTRADAS--------------------------------------------------------------*/
+
+.compras-registradas-container {
+  padding: 20px;
+}
+
+h1 {
+  margin-bottom: 20px;
+}
+
+.tabla-compras {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tabla-compras th,
+.tabla-compras td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+}
+
+.tabla-compras th {
+  background-color: #f4f4f4;
+}
+
+.btn-pdf {
+  background-color: #2d89ef;
+  border: none;
+  color: white;
+  padding: 6px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn-pdf:hover {
+  background-color: #1b5fbf;
+}
